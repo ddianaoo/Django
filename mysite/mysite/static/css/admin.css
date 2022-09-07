@@ -1,0 +1,33 @@
+#header, .module h2, .module caption, .inline-group h2 {
+    background: #90a4ae;
+    color: #fff;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited{
+    color: #fff;
+}
+
+div.breadcrumbs {
+    background: #263238;
+}
+
+#nav-sidebar .current-model {
+    background: #FFEFD5;
+}
+
+#nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+    color: #FFEFD5;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #90a4ae;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #263238;
+}
+
+#changelist-filter li.selected {
+    background: #FFEFD5;
+    border: 1px solid #90a4ae;
+}
