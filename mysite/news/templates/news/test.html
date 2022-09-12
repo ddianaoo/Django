@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Test page :: {{ block.super }}
+Обратная связь :: {{ block.super }}
 {% endblock %}
-
 
 {% block sidebar %}
 {% include 'inc/_sidebar.html' %}
 {% endblock %}
 
+
 {% block content %}
 
-{% for i in page_obj.object_list %}
-    <p>{{ i }}</p>
-{% endfor %}
+<h1>Обратная связь</h1>
+<br>
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <input type="submit" value="Отправить" class="btn btn-primary btn-block">
+
+</form>
 
 {% endblock %}

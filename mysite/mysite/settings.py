@@ -146,3 +146,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1'
 ]
+
+
+#email
+EMAIL_HOST = 'smtp.ukr.net'
+EMAIL_PORT = 465 #2525
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER') # email which takes part in sending letters
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True # for ukr.net, but for gmail contrary settings in two last lines

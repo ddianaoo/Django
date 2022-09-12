@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import News, Category
-from .forms import NewsForm, UserRegisterForm, UserLoginForm
+from .forms import NewsForm, UserRegisterForm, UserLoginForm, ContactForm
 from .utils import MyMixin
 
 from django.views.generic import ListView, DetailView, CreateView
@@ -10,6 +10,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth import login, logout
 from django.contrib import messages
 
+from django.core.mail import send_mail
 
 
 def regist(request):
@@ -28,7 +29,7 @@ def regist(request):
             #return redirect('home')
 
         else:
-            messages.error(request, "Хуйня переделывай")
+            messages.error(request, "Что-то пошло не так")
     else:
         form = UserRegisterForm()
     return render(request, 'news/regist.html', {'form': form})
@@ -100,13 +101,25 @@ class AddNews(LoginRequiredMixin, CreateView):
     login_url = '/admin/'
 
 
-# def test(request):
-#     objects = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r']
-#     paginator = Paginator(objects, 3)
-#     page_num = request.GET.get('page', 1)
-#     page_objects = paginator.get_page(page_num)
-#     context = {
-#         'page_obj': page_objects
-#     }
-#     return render(request, 'news/test.html', context)
+def test(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            message = send_mail(
+                form.cleaned_data['subject'],
+                form.cleaned_data['content'],
+                'dianauzun2006@ukr.net',
+                ['dianauzun2006@gmail.com'],
+                fail_silently=False # для отладки False
+            )
+            if message:
+                messages.success(request, 'Письмо отправлено')
+                return redirect('home')
+            else:
+                messages.error(request, "Что-то пошло не так в момент отправки")
+        else:
+            messages.error(request, "Данные не прошли проверку")
+    else:
+        form = ContactForm()
+    return render(request, 'news/test.html', {'form': form})
 
