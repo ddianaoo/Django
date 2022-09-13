@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'debug_toolbar',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     '127.0.0.1'
 ]
+
+
+#email
+EMAIL_HOST = 'smtp.ukr.net'
+EMAIL_PORT = 465 #2525
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER') # email which takes part in sending letters
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True # for ukr.net, but for gmail contrary settings in two last lines
+
+
+#captcha
+CAPTCHA_LETTER_ROTATION = None #straight letters
+#if you want to get rid of noise in the background
+#CAPTCHA_NOISE_FUNCTIONS = None
+#if you want a captcha with maths operations
+#CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
