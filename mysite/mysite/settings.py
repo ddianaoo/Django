@@ -164,3 +164,11 @@ CAPTCHA_LETTER_ROTATION = None #straight letters
 #CAPTCHA_NOISE_FUNCTIONS = None
 #if you want a captcha with maths operations
 #CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+
+#cache
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'django_cache'),
+    }
+}

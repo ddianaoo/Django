@@ -8,7 +8,7 @@
 /mysite/news/migrations/__pycache__/
 /mysite/news/templatetags/__pycache__/
 /mysite/media/
-
+/mysite/django_cache/
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,venv,django,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,venv,django,pycharm
